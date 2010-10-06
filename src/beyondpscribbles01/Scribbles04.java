@@ -5,8 +5,8 @@
 package beyondpscribbles01;
 
 import java.util.ArrayList;
-import ddf.minim.*;
 
+import util.Style;
 import viruSystem.Path;
 import processing.core.PApplet;
 import processing.core.PVector;
@@ -21,84 +21,90 @@ public class Scribbles04 extends PApplet {
 	private static final long serialVersionUID = 1L;
 
 	public ArrayList <Virus> virs;
-	public ArrayList  <ViruSystem> vsList;
+	public ArrayList  <ViruSystem> virSystemList;
+	public ArrayList<Path> pathsList;
+
 	public ViruSystem vs;
 	public PVector dir;
-	public Path path;
-	
-//	Minim minim;
-//	AudioInput in;
+
+
+	public ArrayList<ArrayList<Virus>> virusListsList;
+
 
 	
 	public void setup(){
+		smooth();
 		size(800,800,P3D);
-		background(255,100);
-//		minim = new Minim(this);
-//		minim.debugOn();
-		// get a line in from Minim, default bit depth is 16
-//		in = minim.getLineIn(Minim.STEREO, 512);
-		virs = new ArrayList<Virus>();
-		vsList = new ArrayList<ViruSystem>();
-//		vs = new ViruSystem(this, 10, new PVector(width/2,height/2,0), virs);
-//		vsList.add(vs);
-		
-		 path = new Path(this, 100);
-		for (int i = 0; i <= 360; i += 360 / 5) {
+		background(255,5);
 
-			path.addPoint((width / 2) + (sin(PApplet.radians(i)))* 100f, (height / 2) + (cos(PApplet.radians(i)))* 100f);
+
+		virSystemList = new ArrayList<ViruSystem>();
+		virusListsList = new ArrayList<ArrayList<Virus>>();
+		pathsList = new ArrayList<Path>();
+		
+		int pathRadius = 50;
+		Path path = null;
+		for (int i = 0; i< width; i = i+ 50){
+			path = new Path(this, pathRadius);
+			ArrayList<Virus> virList = new ArrayList<Virus>();
+			 for(int j = 0; j < height+100;j = j +height / 5){
+				path.addPoint(i , j);
+			 }
+			 
+			ViruSystem newVS = new ViruSystem(this, 10, path.getPoints().get(0), virList);
+			virusListsList.add(virList);
+			virSystemList.add(newVS);
+			pathsList.add(path);
+			 
 		}
+
+
+
 	}
 	public void draw(){
-//		println(in.mix.level());
+//		background(255,5);
+		Style.setPAppletStyle(this);
+		Style.create();
+		drawInfo();
+//		fill(255,5);
+//		rect(0,0,width,height);
+		for (int p = 0; p < pathsList.size(); p++) {
+//			pathsList.get(p).simplePathDisplay();
 
-		fill(255,5);
-		rect(0,0,width,height);
-//		dir = new PVector(random(-1,1),random(-1,1),0);
-
-//		path.simplePathDisplay();
-		
-		for (int i = 0; i < virs.size(); i++) {
-			virs.get(i).applyForces(virs, path);
+			for (int v = 0; v < virSystemList.get(p).getVirs().size(); v++) {
+				virSystemList.get(p).getVirs().get(v).applyForces(virSystemList.get(p).getVirs(), pathsList.get(p));
 		}
-		
-		for(int j = 0;j<vsList.size();j++){
-			vsList.get(j).addVirusEmitter(true);
-			vsList.get(j).run();	
+			virSystemList.get(p).addVirusEmitter(true);
+			virSystemList.get(p).run();
 		}
-//		vs.addVirusEmitter(true);
-//		vs.run();
-//		noise();
 		saveFrame("../data/vs-###.tif");
 	}
 	
 	public void keyReleased() {
 		if (key == 'e') {
-			stop();
+//			stop();
 			exit();
 		}
 	}
-		
-//	public void noise(){
-//		if (in.mix.level()> 0.4f){
-//			
-//			ViruSystem newVS = new ViruSystem(this, 10, new PVector(random(width),random(height),0), virs);
-//			vsList.add(newVS); 
-//			println("added a vs");
-//		}
-		
-//	}
-	public void mousePressed(){
-		
-		ViruSystem newVS = new ViruSystem(this, 10, new PVector(mouseX,mouseY,0), virs);
-		vsList.add(newVS); 
-		
+
+	
+	public void drawInfo() {
+		int virCount = 0;
+		for(int i = 0; i < virusListsList.size();i++){
+			virCount = virCount + (virusListsList.get(i).size() +1);
+			
+		}
+		textFont(Style.GENTIUMBASIC15);
+		noStroke();
+		fill(255);
+		rect(45,35,270,50);
+		fill(0);
+		text("Framerate: " + frameRate, 50, 50);
+		text("there are " + nf(virCount,5) + "Viruses in this frame", 50, 70);
+
+		noFill();
 	}
-//	public void stop()
-//	{
-//	  // always close Minim audio classes when you are done with them
-//	  in.close();
-//	  minim.stop();
-//	 
-//	  super.stop();
-//	}
+	public void mousePressed(){
+	
+	}
 }

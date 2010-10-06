@@ -19,10 +19,10 @@ public class Virus {
 	private PVector vel;
 	private PVector acc;
 	
-	private float gravity = 1.1f;
-	private float maxforce = 1.5f;
-	private float maxspeed = 3.0f;
-	private float radius = 5f; // radius
+	private float gravity = 10.1f;
+	private float maxforce = 0.05f;
+	private float maxspeed = 5.0f;
+	private float radius = 1f; // radius
 	private float lifeTime; // the lifetime of an virus
 //	The higher the mass of an Virus the
 //	lesser the Virus get pushed by cell
@@ -35,7 +35,7 @@ public class Virus {
 		this.vel = new PVector(0, 0);
 		this.loc = loc.get();
 		this.origin = new PVector(loc.x, loc.y);
-		this.lifeTime = p.random(23f,550f);
+		this.lifeTime = p.random(23f,200f);
 
 	}
 	
@@ -115,7 +115,7 @@ public class Virus {
 		update();
 		getALife();
 		display();
-		limit();
+//		limit();
 
 	}
 	public void update() {
@@ -134,7 +134,14 @@ public class Virus {
 		this.lifeTime -= 0.5;
 	}
 	public void display() {
-			p.stroke(0);
+		if(this.lifeTime > 100){
+			p.stroke(255,255,0,100);
+
+		}else{
+			p.stroke(255,0,0,100);
+
+		}
+//			p.stroke(255,0,0,200);
 			p.strokeWeight(2);
 			p.point(loc.x,loc.y);
 			p.noStroke();

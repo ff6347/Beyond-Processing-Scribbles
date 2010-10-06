@@ -14,7 +14,7 @@ public class ViruSystem {
 	
 	private PVector origin;
 	private PApplet p;
-	ArrayList<Virus> virs;
+	public ArrayList<Virus> virs;
 
 	public ViruSystem(PApplet p, int num, PVector v,
 			ArrayList<Virus> virs) {
@@ -23,11 +23,18 @@ public class ViruSystem {
 		this.origin = v.get(); // Store the origin point
 		// Add "num" amount of virus to the arraylist
 		for (int i = 0; i < num; i++) {
-			virs.add(new Virus(p, origin));
+			Virus vi = new Virus(p,origin);
+			vi.setMaxforce(p.random(0.1f,3.0f));
+			vi.setVel(new PVector(-1,1,0));
+			virs.add(vi);
 		}
 	}
 	void addVirus(Virus vi) {
 		virs.add(vi);
+	}
+	public ArrayList <Virus> getVirs(){
+		
+		return this.virs;
 	}
 	
 	public void addVirusEmitter(boolean pointOrigin) {
@@ -36,6 +43,8 @@ public class ViruSystem {
 
 		if (pointOrigin) {
 			vi = new Virus( p, origin);
+			vi.setMaxforce(p.random(0.1f,3.0f));
+			vi.setVel(new PVector(-1,1,0));
 	
 		} else {
 			PVector myOrigin = new PVector(p.random(p.width),
