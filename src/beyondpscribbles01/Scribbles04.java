@@ -77,7 +77,7 @@ public class Scribbles04 extends PApplet {
 			virSystemList.get(p).addVirusEmitter(true);
 			virSystemList.get(p).run();
 		}
-		saveFrame("../data/vs-###.tif");
+//		saveFrame("../data/vs-###.tif");
 	}
 	
 	public void keyReleased() {

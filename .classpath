@@ -1,40 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="lib" path="lib/base/minim/jl1.0.jar">
-		<attributes>
-			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="BeyondPScribbles01/lib/base/minim"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="lib/base/minim/jsminim.jar">
-		<attributes>
-			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="BeyondPScribbles01/lib/base/minim"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="lib/base/minim/minim-spi.jar">
-		<attributes>
-			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="BeyondPScribbles01/lib/base/minim"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="lib/base/minim/minim.jar">
-		<attributes>
-			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="BeyondPScribbles01/lib/base/minim"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="lib/base/minim/mp3spi1.9.4.jar">
-		<attributes>
-			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="BeyondPScribbles01/lib/base/minim"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="lib/base/minim/tritonus_aos.jar">
-		<attributes>
-			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="BeyondPScribbles01/lib/base/minim"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="lib/base/minim/tritonus_share.jar">
-		<attributes>
-			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="BeyondPScribbles01/lib/base/minim"/>
-		</attributes>
-	</classpathentry>
 	<classpathentry kind="lib" path="lib/base/core/ant-launcher.jar">
 		<attributes>
 			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="BeyondPScribbles01/lib/base/core"/>
