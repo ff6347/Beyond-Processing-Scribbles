@@ -82,7 +82,6 @@ public class Scribbles04 extends PApplet {
 	
 	public void keyReleased() {
 		if (key == 'e') {
-//			stop();
 			exit();
 		}
 	}
