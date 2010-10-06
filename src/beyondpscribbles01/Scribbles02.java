@@ -7,7 +7,7 @@ import ddf.minim.*;
 import processing.core.PApplet;
 import processing.core.PVector;
 import util.Debug;
-import util.Particle;
+import util.AnchorPtcl;
 import util.Style;
 
 /**
@@ -65,14 +65,14 @@ public class Scribbles02 extends PApplet{
 		int incr;
 
 
-		private Particle ptclLeftUp;
-		private Particle ptclRightUp;
+		private AnchorPtcl ptclLeftUp;
+		private AnchorPtcl ptclRightUp;
 
 
-		private Particle ptclRightDown;
+		private AnchorPtcl ptclRightDown;
 
 
-		private Particle ptclLeftDown;
+		private AnchorPtcl ptclLeftDown;
 
 	public void setup(){
 		size(500,500,P3D);
@@ -96,10 +96,10 @@ public class Scribbles02 extends PApplet{
 		vec07 = new PVector(width,height,-500);
 		vec08 = new PVector(0,height,-500);
 		
-		ptclLeftUp = new Particle(this, vec05, 10, 2.5f, 2.5f, true, false);
-		ptclRightUp = new Particle(this, vec06, 10, 2.5f, 2.5f, true, false);
-		ptclRightDown = new Particle(this, vec07, 10, 2.5f, 2.5f, true, false);
-		ptclLeftDown = new Particle(this, vec08, 10, 2.5f, 2.5f, true, false);
+		ptclLeftUp = new AnchorPtcl(this, vec05, 10, 2.5f, 2.5f, true, false);
+		ptclRightUp = new AnchorPtcl(this, vec06, 10, 2.5f, 2.5f, true, false);
+		ptclRightDown = new AnchorPtcl(this, vec07, 10, 2.5f, 2.5f, true, false);
+		ptclLeftDown = new AnchorPtcl(this, vec08, 10, 2.5f, 2.5f, true, false);
 
 
 

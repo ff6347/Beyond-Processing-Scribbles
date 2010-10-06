@@ -7,8 +7,8 @@ import processing.core.PVector;
 
 
 /**
- * The <code>Particle</code>'s<br>
- * There are different kind of <code>Particle</code>'s. Simple ones and complexer ones.<br>
+ * The <code>AnchorPtcl</code>'s<br>
+ * There are different kind of <code>AnchorPtcl</code>'s. Simple ones and complexer ones.<br>
  * check the different constructors. all the fields can be set later during
  * runtimme<br>
  * based on: <a href="http://www.shiffman.net/teaching/nature/"
@@ -17,7 +17,7 @@ import processing.core.PVector;
  * @author fabiantheblind
  * @version 0.96
  */
-public class Particle {
+public class AnchorPtcl {
 
 	/**
 	 * the PApplet
@@ -26,41 +26,41 @@ public class Particle {
 	private PApplet p;
 
 	/**
-	 * the location of the <code>Particle</code>
+	 * the location of the <code>AnchorPtcl</code>
 	 */
 	public PVector loc;
 
 	/**
-	 * the velocity of the <code>Particle</code>
+	 * the velocity of the <code>AnchorPtcl</code>
 	 */
 	private PVector vel;
 
 	/**
-	 * the acceleration of the <code>Particle</code>
+	 * the acceleration of the <code>AnchorPtcl</code>
 	 */
 	private PVector acc;
 
 	/**
-	 * the gravity of the <code>Particle</code>.<br>
-	 * it mostly affects the emitter <code>Particle</code>'s<br>
-	 * ore when the <code>Particle</code>'s have no path to follow
+	 * the gravity of the <code>AnchorPtcl</code>.<br>
+	 * it mostly affects the emitter <code>AnchorPtcl</code>'s<br>
+	 * ore when the <code>AnchorPtcl</code>'s have no path to follow
 	 * 
 	 * @see ParticleSystem#addParticleEmitter(boolean)
 	 */
 	private float gravity = 0.0f;
 
 	/**
-	 * the maximum steering force of the <code>Particle</code>
+	 * the maximum steering force of the <code>AnchorPtcl</code>
 	 */
 	private float maxforce = 0.5f;
 	/**
-	 * the maximum speed of the <code>Particle</code>
+	 * the maximum speed of the <code>AnchorPtcl</code>
 	 */
 	private float maxspeed = 1.0f;
 
 	/**
-	 * the radius of the <code>Particle</code>.<br>
-	 * the <code>Particle</code> has no ellipse right now but this is still needed for
+	 * the radius of the <code>AnchorPtcl</code>.<br>
+	 * the <code>AnchorPtcl</code> has no ellipse right now but this is still needed for
 	 * collision
 	 * 
 	 * @see #display()
@@ -68,7 +68,7 @@ public class Particle {
 	private float radius;// = 5f; // radius
 
 	/**
-	 * the time a <code>Particle</code> lifes.<br>
+	 * the time a <code>AnchorPtcl</code> lifes.<br>
 	 * We set it realy high so they dont disapper. It is usefull if you wan't to
 	 * use the emitter in the particlesystem
 	 * 
@@ -79,15 +79,15 @@ public class Particle {
 	 * @see #update()
 	 * @see #getALife()
 	 */
-	private float lifeTime = 100000.0f; // the lifetime of an Particle
+	private float lifeTime = 100000.0f; // the lifetime of an AnchorPtcl
 
 	/**
-	 * The higher the mass of an <code>Particle</code> the lesser the <code>Particle</code>'s get pushed by
+	 * The higher the mass of an <code>AnchorPtcl</code> the lesser the <code>AnchorPtcl</code>'s get pushed by
 	 * <code>Repeller</code><br>
 	 * may never be real 0 i think (or at startup) set it to 0.00000001f
 	 * 
 	 * @see <a
-	 *      href="Repeller.html#pushParticle(particleSystem.Particle)"><code>Repeller.pushParticle(Particle)</code></a>
+	 *      href="Repeller.html#pushParticle(particleSystem.Particle)"><code>Repeller.pushParticle(AnchorPtcl)</code></a>
 	 */
 	private float mass = 0.5f; //
 
@@ -97,8 +97,8 @@ public class Particle {
 //	private boolean affection;
 
 	/**
-	 * if this is true the <code>Particle</code> will not be drawn to the screen<br>
-	 * and the other <code>Particle</code>'s dont steer around them
+	 * if this is true the <code>AnchorPtcl</code> will not be drawn to the screen<br>
+	 * and the other <code>AnchorPtcl</code>'s dont steer around them
 	 * 
 	 * @see <a href="../tmnuelaerm/TmnUELaerm.html#draw()">it happens in
 	 *      <code>TMNUelaerm.draw()</code></a>
@@ -106,13 +106,13 @@ public class Particle {
 	private boolean hidden;
 	/**
 	 * the number of the path to follow. This is specially if you have more than
-	 * one path. so the <code>Particle</code> can switch between paths
+	 * one path. so the <code>AnchorPtcl</code> can switch between paths
 	 */
 	private int pathNum;
 
 	/**
-	 * the <code>Particle</code> knows where he originated.<br>
-	 * this is for the paths points They are also <code>Particle</code>'s<br>
+	 * the <code>AnchorPtcl</code> knows where he originated.<br>
+	 * this is for the paths points They are also <code>AnchorPtcl</code>'s<br>
 	 * 
 	 * @see <a
 	 *      href="Path.html#resetPointPtcls()"><code>Path.resetPointPtcls()</code></a>
@@ -121,34 +121,34 @@ public class Particle {
 
 	// some graphical stuff
 	/**
-	 * the first color of the <code>Particle</code>
+	 * the first color of the <code>AnchorPtcl</code>
 	 * 
 	 * @see Style#ptclCol1
 	 */
 //	private int col1 = Style.ptclCol1;
 	/**
-	 * the second color of the <code>Particle</code>
+	 * the second color of the <code>AnchorPtcl</code>
 	 * 
 	 * @see Style#ptclCol2
 	 */
 //	private int col2 = Style.ptclCol2;
 
 //	/**
-//	 * the third color of the Particle
+//	 * the third color of the AnchorPtcl
 //	 * 
 //	 * @see Style#ptclCol3
 //	 */
 //	private int col3 = Style.ptclCol3;
 
 //	/**
-//	 * this is the <code>Particle</code> for the ParticleSystem Emitter
+//	 * this is the <code>AnchorPtcl</code> for the ParticleSystem Emitter
 //	 * 
 //	 * @param p
 //	 * @param loc
 //	 * @param affection
 //	 * @param hidden
 //	 */
-//	public Particle(PApplet p, PVector loc, boolean affection, boolean hidden) {
+//	public AnchorPtcl(PApplet p, PVector loc, boolean affection, boolean hidden) {
 //		this.p = p;
 //		this.acc = new PVector(0, 0 ,0);
 //		this.vel = new PVector(0, 0,0);
@@ -171,7 +171,7 @@ public class Particle {
 //	 * @param affection
 //	 * @param hidden
 //	 */
-//	public Particle(PApplet p, PVector loc, PVector vel, float r, float ms,
+//	public AnchorPtcl(PApplet p, PVector loc, PVector vel, float r, float ms,
 //			float mf, boolean affection, boolean hidden) {
 //		this.p = p;
 //		this.loc = loc.get();
@@ -206,10 +206,10 @@ public class Particle {
 	 * @param affection
 	 *            should it get affected or not
 	 * @param hidden
-	 *            is it a hidden <code>Particle</code> (see Path)
+	 *            is it a hidden <code>AnchorPtcl</code> (see Path)
 	 *            @see Class Path CLass
 	 */
-	public Particle(PApplet p, PVector loc, float r, float ms,
+	public AnchorPtcl(PApplet p, PVector loc, float r, float ms,
 			float mf, boolean affection, boolean hidden) {
 		this.p = p;
 		this.loc = loc.get();
@@ -235,7 +235,7 @@ public class Particle {
 //	 * @param affection
 //	 * @param hidden
 //	 */
-//	public Particle(PApplet p, PVector loc, PVector vel, float r, int pathNum,
+//	public AnchorPtcl(PApplet p, PVector loc, PVector vel, float r, int pathNum,
 //			boolean affection, boolean hidden) {
 //		this.p = p;
 //		this.loc = loc.get();
@@ -253,11 +253,11 @@ public class Particle {
 	 * A function to deal with path following and separation
 	 * 
 	 * @param ptkls
-	 *            a Arraylist of <code>Particle</code>'s
+	 *            a Arraylist of <code>AnchorPtcl</code>'s
 	 * @param path
 	 *            a Path
 	 */
-//	public void applyForces(ArrayList<Particle> ptkls) {
+//	public void applyForces(ArrayList<AnchorPtcl> ptkls) {
 //
 //		// Follow path force
 //		PVector f = follow(path);
@@ -272,7 +272,7 @@ public class Particle {
 //	}
 
 	/**
-	 * applys a force to the <code>Particle</code>
+	 * applys a force to the <code>AnchorPtcl</code>
 	 * 
 	 * @param force
 	 *            PVector
@@ -298,7 +298,7 @@ public class Particle {
 	}
 
 	/**
-	 * Is the <code>Particle</code> still useful? (if its lifetime is equal to or less than
+	 * Is the <code>AnchorPtcl</code> still useful? (if its lifetime is equal to or less than
 	 * 0.0)
 	 * 
 	 * @return boolean true or false
@@ -312,7 +312,7 @@ public class Particle {
 	}
 
 	/**
-	 * Show the <code>Particle</code>
+	 * Show the <code>AnchorPtcl</code>
 	 * 
 	 */
 	public void display() {
@@ -465,7 +465,7 @@ public class Particle {
 //		}
 //	}
 	/**
-	 * use this if you want the <code>Particle</code>'s to die sometime is usefull using the
+	 * use this if you want the <code>AnchorPtcl</code>'s to die sometime is usefull using the
 	 * ParticleEmitter
 	 * 
 	 * @see #update()
@@ -574,7 +574,7 @@ public class Particle {
 	}
 
 	/**
-	 * Limits the <code>Particle</code>'s to the screen
+	 * Limits the <code>AnchorPtcl</code>'s to the screen
 	 * 
 	 */
 	void limit() {
@@ -600,11 +600,11 @@ public class Particle {
 	 * @deprecated
 	 */
 	@Deprecated
-	public void myForce(ArrayList<Particle> obstacles) {
+	public void myForce(ArrayList<AnchorPtcl> obstacles) {
 
 		
 		for (int i = 0; i < obstacles.size(); i++) {
-			Particle obstcl = obstacles.get(i);
+			AnchorPtcl obstcl = obstacles.get(i);
 			PVector force = new PVector(obstcl.loc.x, obstcl.loc.y); // obstcl.loc;
 			force.normalize();
 			loc.x = loc.x + force.x;
@@ -614,7 +614,7 @@ public class Particle {
 	}
 
 	/**
-	 * reset the <code>Particle</code>'s Color 1
+	 * reset the <code>AnchorPtcl</code>'s Color 1
 	 * 
 	 */
 //	public synchronized void resetColorCol1() {
@@ -622,7 +622,7 @@ public class Particle {
 //	}
 
 	/**
-	 * reset the <code>Particle</code>'s Color 2
+	 * reset the <code>AnchorPtcl</code>'s Color 2
 	 * 
 	 */
 //	public synchronized void resetColorCol2() {
@@ -640,7 +640,7 @@ public class Particle {
 	}
 
 	/**
-	 * resets the mass of the <code>Particle</code> to 0.5
+	 * resets the mass of the <code>AnchorPtcl</code> to 0.5
 	 * 
 	 * @see #mass
 	 * @see #setMass(float)
@@ -661,7 +661,7 @@ public class Particle {
 	}
 
 	/**
-	 * this resets the maxspeed of the <code>Particle</code> to 2.0
+	 * this resets the maxspeed of the <code>AnchorPtcl</code> to 2.0
 	 * 
 	 * @see #maxspeed
 	 * @see #setMaxspeed(float)
@@ -700,17 +700,17 @@ public class Particle {
 	 * Separation Method. checks for nearby boids and steers away<br>
 	 * 
 	 * @param ptclsList
-	 *            ArrayList of <code>Particle</code>'s
+	 *            ArrayList of <code>AnchorPtcl</code>'s
 	 * @return steer
 	 */
-	public PVector separate(ArrayList<Particle> ptclsList) {
+	public PVector separate(ArrayList<AnchorPtcl> ptclsList) {
 
 		float desiredseparation = radius * 2;
 		PVector steer = new PVector(0, 0);
 		int count = 0;
 
-		Particle ptcl = null;
-		Particle other = null;
+		AnchorPtcl ptcl = null;
+		AnchorPtcl other = null;
 		// For every boid in the system, check if it's too close
 		for (int i = 0; i < ptclsList.size(); i++) {
 			ptcl = ptclsList.get(i);
@@ -811,7 +811,7 @@ public class Particle {
 //	}
 
 	/**
-	 * set the gravity of the <code>Particle</code>. if the <code>Particle</code> follows a path you wont
+	 * set the gravity of the <code>AnchorPtcl</code>. if the <code>AnchorPtcl</code> follows a path you wont
 	 * see much of the gravity. but with the emitter! wow!!!!!
 	 * 
 	 * @param inGravity
@@ -830,7 +830,7 @@ public class Particle {
 	}
 
 	/**
-	 * set the lifetime of the <code>Particle</code><br>
+	 * set the lifetime of the <code>AnchorPtcl</code><br>
 	 * if u want to use this you need to add {@code this.lifeTime -= 0.5; } to
 	 * {@link #update()}<br>
 	 * or add {@code getALife();} to {@link #run()}<br>
@@ -859,7 +859,7 @@ public class Particle {
 	}
 
 	/**
-	 * sets the mass of an <code>Particle</code>. use something like 0.5 for the begining
+	 * sets the mass of an <code>AnchorPtcl</code>. use something like 0.5 for the begining
 	 * 
 	 * @param massIn
 	 *            a float value use it between 0.0 and 1.0
@@ -885,7 +885,7 @@ public class Particle {
 	}
 
 	/**
-	 * set the maxspeed of the <code>Particle</code> use something like 5 for the beginning
+	 * set the maxspeed of the <code>AnchorPtcl</code> use something like 5 for the beginning
 	 * 
 	 * @param inMaxspeed
 	 *            a float value
@@ -909,7 +909,7 @@ public class Particle {
 	}
 
 	/**
-	 * the size of the <code>Particle</code>
+	 * the size of the <code>AnchorPtcl</code>
 	 * 
 	 * @param inRadius
 	 *            float value
