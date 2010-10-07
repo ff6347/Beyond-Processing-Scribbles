@@ -28,6 +28,9 @@ public class Virus {
 //	lesser the Virus get pushed by cell
 	private float mass = 0f; //
 	private PVector origin;
+	private int strokeWeight;
+	private int strokeColor01;
+	private int strokeColor02;
 
 	public Virus(PApplet p, PVector loc) {
 		this.p = p;
@@ -36,6 +39,9 @@ public class Virus {
 		this.loc = loc.get();
 		this.origin = new PVector(loc.x, loc.y);
 		this.lifeTime = p.random(23f,200f);
+		this.strokeWeight = 2;
+		this.strokeColor01 =  p.color(255,0,0);
+		this.strokeColor02 =  p.color(255,255,0);
 
 	}
 	
@@ -111,6 +117,30 @@ public class Virus {
 		this.gravity = gravity;
 	}
 
+	public int getStrokeWeight() {
+		return strokeWeight;
+	}
+
+	public void setStrokeWeight(int strokeWeight) {
+		this.strokeWeight = strokeWeight;
+	}
+
+	public int getStrokeColor01() {
+		return strokeColor01;
+	}
+
+	public void setStrokeColor01(int strokeColor01) {
+		this.strokeColor01 = strokeColor01;
+	}
+
+	public int getStrokeColor02() {
+		return strokeColor02;
+	}
+
+	public void setStrokeColor02(int strokeColor02) {
+		this.strokeColor02 = strokeColor02;
+	}
+
 	public void run() {
 		update();
 		getALife();
@@ -135,14 +165,14 @@ public class Virus {
 	}
 	public void display() {
 		if(this.lifeTime > 100){
-			p.stroke(255,255,0,100);
+			p.stroke(this.strokeColor02);
 
 		}else{
-			p.stroke(255,0,0,100);
+			p.stroke(this.strokeColor01);
 
 		}
 //			p.stroke(255,0,0,200);
-			p.strokeWeight(2);
+			p.strokeWeight(this.strokeWeight);
 			p.point(loc.x,loc.y);
 			p.noStroke();
 
@@ -182,6 +212,15 @@ public class Virus {
 		// Accumulate in acceleration
 		this.acc.add(f);
 		this.acc.add(s);
+	}
+	public void applyForces( Path path) {
+
+		// Follow path force
+		PVector f = follow(path);
+		// Arbitrary weighting
+		f.mult(3);
+		// Accumulate in acceleration
+		this.acc.add(f);
 	}
 	
 	public void applyRepellForce(PVector force) {

@@ -3,7 +3,7 @@
  */
 package beyondpscribbles01;
 
-import ddf.minim.*;
+//import ddf.minim.*;
 import processing.core.PApplet;
 import processing.core.PVector;
 import util.Debug;
@@ -22,8 +22,8 @@ public class Scribbles02 extends PApplet{
 	private static final long serialVersionUID = 1L;
 	
 	
-	Minim minim;
-	AudioInput in;
+//	Minim minim;
+//	AudioInput in;
 
 	
 		private PVector vec01;
@@ -76,10 +76,10 @@ public class Scribbles02 extends PApplet{
 
 	public void setup(){
 		size(500,500,P3D);
-		minim = new Minim(this);
-		minim.debugOn();
+//		minim = new Minim(this);
+//		minim.debugOn();
 		// get a line in from Minim, default bit depth is 16
-		in = minim.getLineIn(Minim.STEREO, 512);
+//		in = minim.getLineIn(Minim.STEREO, 512);
 
 		Debug.setPAppletDebug(this);
 		Style.setPAppletStyle(this);
@@ -143,30 +143,30 @@ public class Scribbles02 extends PApplet{
 //		vec05.y = ptclLeftUp.loc.y + in.mix.level()*100;
 //		vec05.z = ptclLeftUp.loc.z + in.mix.level()*100;
 		
-		ptclLeftUp.loc.x = ptclLeftUp.loc.x + in.mix.level() *1000*(random(-1,1));
-		ptclLeftUp.loc.y = ptclLeftUp.loc.y + in.mix.level()*1000*(random(-1,1));
-		ptclLeftUp.loc.z = ptclLeftUp.loc.z + in.mix.level()*1000*(random(-1,1));
+//		ptclLeftUp.loc.x = ptclLeftUp.loc.x + in.mix.level() *1000*(random(-1,1));
+//		ptclLeftUp.loc.y = ptclLeftUp.loc.y + in.mix.level()*1000*(random(-1,1));
+//		ptclLeftUp.loc.z = ptclLeftUp.loc.z + in.mix.level()*1000*(random(-1,1));
 		
 		ptclLeftUp.run();
 		ptclLeftUp.seek(ptclLeftUp.getOrigin());
-		
-		ptclRightUp.loc.x = ptclRightUp.loc.x + in.mix.level() *1000*(random(-1,1));
-		ptclRightUp.loc.y = ptclRightUp.loc.y + in.mix.level()*1000*(random(-1,1));
-		ptclRightUp.loc.z = ptclRightUp.loc.z + in.mix.level()*1000*(random(-1,1));
+//		
+//		ptclRightUp.loc.x = ptclRightUp.loc.x + in.mix.level() *1000*(random(-1,1));
+//		ptclRightUp.loc.y = ptclRightUp.loc.y + in.mix.level()*1000*(random(-1,1));
+//		ptclRightUp.loc.z = ptclRightUp.loc.z + in.mix.level()*1000*(random(-1,1));
 		
 		ptclRightUp.run();
 		ptclRightUp.seek(ptclRightUp.getOrigin());
 		
-		ptclRightDown.loc.x = ptclRightDown.loc.x + in.mix.level() *1000*(random(-1,1));
-		ptclRightDown.loc.y = ptclRightDown.loc.y + in.mix.level()*1000*(random(-1,1));
-		ptclRightDown.loc.z = ptclRightDown.loc.z + in.mix.level()*1000*(random(-1,1));
+//		ptclRightDown.loc.x = ptclRightDown.loc.x + in.mix.level() *1000*(random(-1,1));
+//		ptclRightDown.loc.y = ptclRightDown.loc.y + in.mix.level()*1000*(random(-1,1));
+//		ptclRightDown.loc.z = ptclRightDown.loc.z + in.mix.level()*1000*(random(-1,1));
 		
 		ptclRightDown.run();
 		ptclRightDown.seek(ptclRightDown.getOrigin());
 		
-		ptclLeftDown.loc.x = ptclLeftDown.loc.x + in.mix.level() *1000*(random(-1,1));
-		ptclLeftDown.loc.y = ptclLeftDown.loc.y + in.mix.level()*1000*(random(-1,1));
-		ptclLeftDown.loc.z = ptclLeftDown.loc.z + in.mix.level()*1000*(random(-1,1));
+//		ptclLeftDown.loc.x = ptclLeftDown.loc.x + in.mix.level() *1000*(random(-1,1));
+//		ptclLeftDown.loc.y = ptclLeftDown.loc.y + in.mix.level()*1000*(random(-1,1));
+//		ptclLeftDown.loc.z = ptclLeftDown.loc.z + in.mix.level()*1000*(random(-1,1));
 		
 		ptclLeftDown.run();
 		ptclLeftDown.seek(ptclLeftDown.getOrigin());
@@ -235,14 +235,14 @@ public class Scribbles02 extends PApplet{
 		}
 	}
 	
-	public void stop()
-	{
-	  // always close Minim audio classes when you are done with them
-	  in.close();
-	  minim.stop();
-	 
-	  super.stop();
-	}
+//	public void stop()
+//	{
+//	  // always close Minim audio classes when you are done with them
+//	  in.close();
+//	  minim.stop();
+//	 
+//	  super.stop();
+//	}
 
 
 }
